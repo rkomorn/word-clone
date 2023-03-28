@@ -6,8 +6,8 @@ function Guess({ guess, guessIndex }) {
     <p className="guess">
       {guess.map((letter, index) => {
         // Getting some optional chaining practice in.
-        const cellClass = letter?.status;
-        return <span className={`cell ${cellClass}`} key={`${guessIndex}-${index}`}>{letter?.letter}</span>;
+        const cellClass = letter ? `cell ${letter.status}` : "cell";
+        return <span className={cellClass} key={`${guessIndex}-${index}`}>{letter?.letter}</span>;
       })}
     </p>
   );
