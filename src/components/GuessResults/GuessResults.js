@@ -4,8 +4,8 @@ import Guess from "../Guess";
 
 function GuessResults({ guesses }) {
   return (
-    <div>
-      {guesses.map((guess, index) => <Guess key={index} guess={guess} />)}
+    <div className="guess-results">
+      {guesses.map((guess, index) => <Guess key={index} guess={guess} guessIndex={index} />)}
     </div>
   );
 }

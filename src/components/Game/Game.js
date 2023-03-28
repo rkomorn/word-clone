@@ -2,6 +2,7 @@ import React from "react";
 
 import { sample } from "../../utils";
 import { WORDS } from "../../data";
+import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 
 import GuessResults from "../GuessResults";
 import GuessInput from "../GuessInput/";
@@ -13,7 +14,7 @@ console.info({ answer });
 
 function Game() {
 
-  const [guesses, setGuesses] = React.useState(Array(6).fill(Array(5).fill("")));
+  const [guesses, setGuesses] = React.useState(Array(NUM_OF_GUESSES_ALLOWED).fill(Array(5).fill("")));
   const [guessCount, setGuessCount] = React.useState(0);
 
   function handleSubmitGuess(guess) {
