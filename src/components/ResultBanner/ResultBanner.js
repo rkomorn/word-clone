@@ -1,23 +1,33 @@
 import React from "react";
 
-function ResultBanner({ gameStatus, guessCount, answer }) {
+const ResultBanner = ({ gameStatus, guessCount, answer }) => {
+  return gameStatus === "lost" ? <LostBanner answer={answer} /> : <WonBanner guessCount={guessCount} />;
+};
 
-  if (gameStatus === "lost") {
-    return (
-      <div className="sad banner">
-        <p>Sorry, the correct answer is <strong>{answer}</strong>.</p>
-      </div>
-    );
-  }
-
+const Banner = ({ bannerStatus, children }) => {
   return (
-    <div className="happy banner">
+    <div className={`${bannerStatus} banner`}>{children}</div>
+  );
+};
+const WonBanner = ({ guessCount }) => {
+  return (
+    <Banner bannerStatus="happy">
       <p>
         <strong>Congratulations!</strong> Got it in
         <strong>{guessCount} guesses</strong>.
       </p>
-    </div>
+    </Banner>
   );
-}
+};
+
+const LostBanner = ({ answer }) => {
+  return (
+    <Banner bannerStatus="sad">
+      <p>
+        Sorry, the correct answer is <strong>{answer}</strong>.
+      </p>
+    </Banner>
+  );
+};
 
 export default ResultBanner;
