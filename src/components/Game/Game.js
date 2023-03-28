@@ -3,7 +3,7 @@ import React from "react";
 import { sample } from "../../utils";
 import { WORDS } from "../../data";
 
-import Guesses from "../Guesses";
+import GuessResults from "../GuessResults";
 import GuessInput from "../GuessInput/";
 
 // Pick a random word on every pageload.
@@ -13,12 +13,12 @@ console.info({ answer });
 
 function Game() {
 
-  const [guesses, setGuesses] = React.useState(Array(5).fill(Array(5).fill("")));
+  const [guesses, setGuesses] = React.useState(Array(6).fill(Array(5).fill("")));
   const [guessCount, setGuessCount] = React.useState(0);
 
-  function handleGuess(guess) {
-    if (guessCount >= 5) {
-      throw new Error("Already guessed 5 times");
+  function handleSubmitGuess(guess) {
+    if (guessCount >= 6) {
+      throw new Error("Already guessed 6 times");
     }
 
     const nextGuesses = [...guesses];
@@ -29,7 +29,7 @@ function Game() {
   }
 
   return (
-    <><Guesses guesses={guesses} /><GuessInput handleGuess={handleGuess} /></>
+    <><GuessResults guesses={guesses} /><GuessInput handleSubmitGuess={handleSubmitGuess} /></>
   )
     ;
 }
