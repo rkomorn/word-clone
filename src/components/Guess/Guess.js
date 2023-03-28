@@ -1,9 +1,14 @@
 import React from "react";
 
 function Guess({ guess, guessIndex }) {
+
   return (
     <p className="guess">
-      {guess.map((letter, index) => <span className="cell" key={`${guessIndex}-${index}`}>{letter}</span>)}
+      {guess.map((letter, index) => {
+        // Getting some optional chaining practice in.
+        const cellClass = letter?.status;
+        return <span className={`cell ${cellClass}`} key={`${guessIndex}-${index}`}>{letter?.letter}</span>;
+      })}
     </p>
   );
 }

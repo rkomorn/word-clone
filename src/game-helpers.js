@@ -6,14 +6,18 @@
 export function checkGuess(guess, answer) {
   // This constant is a placeholder that indicates we've successfully
   // dealt with this character (it's correct, or misplaced).
-  const SOLVED_CHAR = '✓';
+  const SOLVED_CHAR = "✓";
 
   if (!guess) {
     return null;
   }
 
-  const guessChars = guess.toUpperCase().split('');
-  const answerChars = answer.split('');
+  // Hack: the logic in the original repo  is not needed in my edited form of the game where I already turn the
+  // guesses into arrays of characters.
+  // const guessChars = guess.toUpperCase().split('');
+  // const answerChars = answer.split('');
+  const guessChars = guess;
+  const answerChars = answer;
 
   const result = [];
 
@@ -22,7 +26,7 @@ export function checkGuess(guess, answer) {
     if (guessChars[i] === answerChars[i]) {
       result[i] = {
         letter: guessChars[i],
-        status: 'correct',
+        status: "correct"
       };
       answerChars[i] = SOLVED_CHAR;
       guessChars[i] = SOLVED_CHAR;
@@ -36,18 +40,18 @@ export function checkGuess(guess, answer) {
       continue;
     }
 
-    let status = 'incorrect';
+    let status = "incorrect";
     const misplacedIndex = answerChars.findIndex(
       (char) => char === guessChars[i]
     );
     if (misplacedIndex >= 0) {
-      status = 'misplaced';
+      status = "misplaced";
       answerChars[misplacedIndex] = SOLVED_CHAR;
     }
 
     result[i] = {
       letter: guessChars[i],
-      status,
+      status
     };
   }
 
