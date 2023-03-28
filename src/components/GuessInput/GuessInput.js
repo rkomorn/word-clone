@@ -11,7 +11,7 @@ const GuessInput = () => {
           }
           }>
       <label htmlFor="guess-input">Enter guess:</label>
-      <input id="guess-input" pattern="[A-Za-z]{5}" value={guess}
+      <input required={true} maxLength="5" minLength="5" id="guess-input" pattern="[A-Za-z]{5}" value={guess}
              onChange={event => setGuess(event.target.value.toUpperCase())}></input>
     </form>
   );
